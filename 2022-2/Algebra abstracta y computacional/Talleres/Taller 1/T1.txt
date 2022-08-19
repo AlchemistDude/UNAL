@@ -1,0 +1,31 @@
+In[61]:= pi=Characters[ToString@N[Pi ,1000000]];
+pattern = Characters["2022"];
+pos=SequencePosition[pi,pattern];
+pos[[1]]
+
+
+Out[64]= {17954,17957}
+In[468]:= pi=Characters[ToString@N[Pi ,10^5]];
+frequencies = Counts[pi];
+frequencies = Delete[frequencies,"."];
+BarChart[frequencies,ChartLabels->Automatic,PlotLabel->"PI digits Frequency",AxesLabel->{"Digits","Frequency"}]
+
+
+Out[471]= 
+In[457]:= FibNest[n_]:=Nest[{{1,1},{1,0}}.#&,{1,1},n-1][[-1]]
+FibLinearRecurrence[n_]:=LinearRecurrence[{1,1},{1,1},n][[-1]]
+l1 = {};
+l2 = {};
+l3 = {};
+For[i=10,i<=1000,i+=10;AppendTo[l1,AbsoluteTiming[FibNest[i]][[1]]]];
+For[i=10,i<=1000,i+=10;AppendTo[l2,AbsoluteTiming[FibLinearRecurrence[i]][[1]]]];
+For[i=10,i<=1000,i+=10,AppendTo[l3,i]];
+data1 = Transpose@{l3,l1};
+data2 = Transpose@{l3,l2};
+ListLinePlot[{data1,data2},Mesh->All,PlotLegends->{"Nest","Linear Recurrence"},PlotLabel->"Nest vs Linear Recurrence"
+,AxesLabel->{"n","Time complexity"}]
+
+
+Out[467]= 	Nest
+	Linear Recurrence
+
