@@ -1,0 +1,715 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 13.1' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     29263,        705]
+NotebookOptionsPosition[     25589,        647]
+NotebookOutlinePosition[     26021,        664]
+CellTagsIndexPosition[     25978,        661]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell["\<\
+d.) Sean  x, y n\[UAcute]meros enteros positivos. Escriba una funci\[OAcute]n \
+GCDBinario[x,y] en la que implemente este algoritmo (el algoritmo debe \
+imprimir los pasos intermedios). Con la funci\[OAcute]n dise\[NTilde]ada \
+calcule el m.c.d. de los n\[UAcute]meros 8771 y 3206.
+
+\
+\>", "Text",
+ CellChangeTimes->{{3.8708845538959293`*^9, 3.870884604556814*^9}, {
+  3.8708848721951637`*^9, 
+  3.870884986050728*^9}},ExpressionUUID->"ba98fc69-5082-47f4-b819-\
+62bce9c4e387"],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.870884610570905*^9, 
+  3.8708846118308125`*^9}},ExpressionUUID->"73ea1818-ebda-4e27-b8df-\
+ff5a4d72c2bc"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"integerQ", "[", "x_", "]"}], " ", ":=", " ", 
+   RowBox[{"x", " ", "==", " ", 
+    RowBox[{"Round", "[", "x", "]"}]}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"GCDBinario", "[", 
+    RowBox[{"x_", ",", "y_"}], "]"}], " ", ":=", " ", 
+   RowBox[{"Which", "[", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"x", "==", " ", "y"}], ",", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"Print", "[", 
+       RowBox[{"StringForm", "[", 
+        RowBox[{
+        "\"\<x=`` y y=``, luego x = y, entonces El GCD es ``\>\"", ",", "x", 
+         ",", "y", ",", "x"}], "]"}], "]"}], ";", "\[IndentingNewLine]", " ", 
+      "x"}], ",", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"integerQ", "[", " ", 
+       RowBox[{"x", "/", "2"}], "]"}], "&&", " ", 
+      RowBox[{"integerQ", "[", 
+       RowBox[{"y", "/", "2"}], "]"}]}], ",", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"Print", "[", 
+       RowBox[{"StringForm", "[", 
+        RowBox[{
+        "\"\<x=`` y y=``, luego tanto x como y son pares, entonces \
+GCDBinario[``,``]\>\"", ",", "x", ",", "y", ",", 
+         RowBox[{"x", "/", "2"}], ",", 
+         RowBox[{"y", "/", "2"}]}], "]"}], "]"}], ";", "\[IndentingNewLine]", 
+      RowBox[{"2", "*", 
+       RowBox[{"GCDBinario", "[", 
+        RowBox[{
+         RowBox[{"x", "/", "2"}], ",", 
+         RowBox[{"y", "/", "2"}]}], "]"}]}]}], ",", "\[IndentingNewLine]", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"integerQ", "[", 
+        RowBox[{"x", " ", "/", "2"}], "]"}], " ", "&&", " ", 
+       RowBox[{"integerQ", "[", 
+        RowBox[{
+         RowBox[{"(", 
+          RowBox[{"y", "-", "1"}], ")"}], " ", "/", "2"}], "]"}]}], ")"}], 
+     ",", 
+     RowBox[{
+      RowBox[{"Print", "[", 
+       RowBox[{"StringForm", "[", 
+        RowBox[{
+        "\"\<x=`` y y=``, luego x es par pero y no, entonces \
+GCDBinario[``,``]\>\"", ",", "x", ",", "y", ",", 
+         RowBox[{"x", "/", "2"}], ",", "y"}], "]"}], "]"}], ";", 
+      RowBox[{"GCDBinario", "[", 
+       RowBox[{
+        RowBox[{"x", "/", "2"}], ",", "y"}], "]"}]}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"integerQ", "[", 
+        RowBox[{"y", " ", "/", "2"}], "]"}], " ", "&&", " ", 
+       RowBox[{"integerQ", "[", 
+        RowBox[{
+         RowBox[{"(", 
+          RowBox[{"x", "-", "1"}], ")"}], " ", "/", "2"}], "]"}]}], ")"}], 
+     ",", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"Print", "[", 
+       RowBox[{"StringForm", "[", 
+        RowBox[{
+        "\"\<x=`` y y=``, luego y es par pero x no, entonces \
+GCDBinario[``,``]\>\"", ",", "x", ",", "y", ",", "x", ",", 
+         RowBox[{"y", "/", "2"}]}], "]"}], "]"}], ";", "\[IndentingNewLine]", 
+      RowBox[{"GCDBinario", "[", 
+       RowBox[{
+        RowBox[{"y", "/", "2"}], ",", "x"}], "]"}]}], " ", ",", 
+     "\[IndentingNewLine]", " ", 
+     RowBox[{
+      RowBox[{"integerQ", "[", 
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{"x", "-", "1"}], ")"}], "/", "2"}], "]"}], " ", "&&", " ", 
+      RowBox[{"integerQ", "[", 
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{"y", "-", "1"}], ")"}], "/", "2"}], "]"}]}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"Print", "[", 
+       RowBox[{"StringForm", "[", 
+        RowBox[{
+        "\"\<x=`` y y=``, luego tanto x como y son impares, entonces \
+GCDBinario[``,``]\>\"", ",", "x", ",", "y", ",", 
+         RowBox[{
+          RowBox[{"Abs", "[", 
+           RowBox[{"x", "-", "y"}], "]"}], "/", "2"}], ",", 
+         RowBox[{"Min", "[", 
+          RowBox[{"x", ",", "y"}], "]"}]}], "]"}], "]"}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"GCDBinario", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"(", 
+          RowBox[{"Abs", "[", 
+           RowBox[{"x", "-", "y"}], "]"}], ")"}], "/", "2"}], ",", 
+        RowBox[{"Min", "[", 
+         RowBox[{"x", ",", "y"}], "]"}]}], " ", "\[IndentingNewLine]", 
+       "]"}]}]}], "]"}]}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"GCDBinario", "[", 
+   RowBox[{"8771", ",", "3206"}], "]"}], "\n", "\[IndentingNewLine]", 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]"}], "Input",
+ CellChangeTimes->CompressedData["
+1:eJwdzl9IkwEYhfHVotoqKSpqFtYcFSraJE2tliWLiWtbml5IhrY5L6y2ZGGN
+CDIhacYcsy3YWhOiUpPKUMj+jECIgohZKyVWCa1VpEusWNRF7fkuXn6cc3Ne
+udFaZZ4rEomyU4fvd13qWj8+tXtmmd6Feb+SHjwbGfXiwkd3gkJfXHUDI27T
+ADqMlhF84vkXxZUHBj9g7IzmE/a+1onlKdWy7QswmHy4AacMgSxUJBtzsN+x
+Nx998fYiPDIxrEJnxWNBb6liD95dFRI0dnRXYJlo9T5s6C63YUuBXtB50HsC
+Lzer2vBcTfApbssLP8Oh1oww+uOOV9jasyiK2q3qScx8sD+GVwfccbSc+jON
+9t6RBMaiJT/w0L0hcSZ/a8ckWHZSJsWl05I01PvNgjNFtjUYmXd7E7rXDedi
+9de3Smw4b9qBGy8c1uD153odNvksgmrdWA16pb56YUftasTTLR8teLQwGMKX
+ksQoKsP3X+DE4OQ7HG+2/RWy1pmmSHkskbEcs6/NCn4xV8qwTqnJxVvf6gpx
+/mxbKVoNnzX4c0lOOV78HtDh2jlRAy4ONdXimxXiepSaNpvwd3utFUtuptvx
+uL2vA9MDchcWd23xYLL6ih8jnaEQ7jSr8rNSVpo6C/A/1BZWyw==
+  "],
+ CellLabel->
+  "In[325]:=",ExpressionUUID->"74d52ad4-77fd-4b84-b091-a5b444a56e66"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox["\<\"x=\\!\\(\\*RowBox[{\\\"8771\\\"}]\\) y \
+y=\\!\\(\\*RowBox[{\\\"3206\\\"}]\\), luego y es par pero x no, entonces \
+GCDBinario[\\!\\(\\*RowBox[{\\\"8771\\\"}]\\),\\!\\(\\*RowBox[{\\\"1603\\\"}]\
+\\)]\"\>",
+  StringForm[
+  "x=`` y y=``, luego y es par pero x no, entonces GCDBinario[``,``]", 8771, 
+   3206, 8771, 1603],
+  Editable->False]], "Print",
+ CellChangeTimes->{
+  3.8708908763086367`*^9, {3.8708910102358646`*^9, 3.8708910220069323`*^9}, 
+   3.870891091550193*^9, 3.8708913456244593`*^9, 3.870891482848133*^9, 
+   3.8708915194112663`*^9, 3.870902696827837*^9, 3.870903986756934*^9},
+ CellLabel->
+  "Durante la evaluaci\[OAcute]n de \
+In[325]:=",ExpressionUUID->"c8f17904-b0a6-4c95-8508-7e731f6761e6"],
+
+Cell[BoxData[
+ InterpretationBox["\<\"x=\\!\\(\\*RowBox[{\\\"1603\\\"}]\\) y \
+y=\\!\\(\\*RowBox[{\\\"8771\\\"}]\\), luego tanto x como y son impares, \
+entonces GCDBinario[\\!\\(\\*RowBox[{\\\"3584\\\"}]\\),\\!\\(\\*RowBox[{\\\"\
+1603\\\"}]\\)]\"\>",
+  StringForm[
+  "x=`` y y=``, luego tanto x como y son impares, entonces GCDBinario[``,``]",
+    1603, 8771, 3584, 1603],
+  Editable->False]], "Print",
+ CellChangeTimes->{
+  3.8708908763086367`*^9, {3.8708910102358646`*^9, 3.8708910220069323`*^9}, 
+   3.870891091550193*^9, 3.8708913456244593`*^9, 3.870891482848133*^9, 
+   3.8708915194112663`*^9, 3.870902696827837*^9, 3.8709039867629538`*^9},
+ CellLabel->
+  "Durante la evaluaci\[OAcute]n de \
+In[325]:=",ExpressionUUID->"896e13f5-df66-4853-a7ed-92a0339b6610"],
+
+Cell[BoxData[
+ InterpretationBox["\<\"x=\\!\\(\\*RowBox[{\\\"3584\\\"}]\\) y \
+y=\\!\\(\\*RowBox[{\\\"1603\\\"}]\\), luego x es par pero y no, entonces \
+GCDBinario[\\!\\(\\*RowBox[{\\\"1792\\\"}]\\),\\!\\(\\*RowBox[{\\\"1603\\\"}]\
+\\)]\"\>",
+  StringForm[
+  "x=`` y y=``, luego x es par pero y no, entonces GCDBinario[``,``]", 3584, 
+   1603, 1792, 1603],
+  Editable->False]], "Print",
+ CellChangeTimes->{
+  3.8708908763086367`*^9, {3.8708910102358646`*^9, 3.8708910220069323`*^9}, 
+   3.870891091550193*^9, 3.8708913456244593`*^9, 3.870891482848133*^9, 
+   3.8708915194112663`*^9, 3.870902696827837*^9, 3.8709039867699285`*^9},
+ CellLabel->
+  "Durante la evaluaci\[OAcute]n de \
+In[325]:=",ExpressionUUID->"d9795446-5d8c-4460-8fca-119fd9b10b6d"],
+
+Cell[BoxData[
+ InterpretationBox["\<\"x=\\!\\(\\*RowBox[{\\\"1792\\\"}]\\) y \
+y=\\!\\(\\*RowBox[{\\\"1603\\\"}]\\), luego x es par pero y no, entonces \
+GCDBinario[\\!\\(\\*RowBox[{\\\"896\\\"}]\\),\\!\\(\\*RowBox[{\\\"1603\\\"}]\\\
+)]\"\>",
+  StringForm[
+  "x=`` y y=``, luego x es par pero y no, entonces GCDBinario[``,``]", 1792, 
+   1603, 896, 1603],
+  Editable->False]], "Print",
+ CellChangeTimes->{
+  3.8708908763086367`*^9, {3.8708910102358646`*^9, 3.8708910220069323`*^9}, 
+   3.870891091550193*^9, 3.8708913456244593`*^9, 3.870891482848133*^9, 
+   3.8708915194112663`*^9, 3.870902696827837*^9, 3.8709039867739177`*^9},
+ CellLabel->
+  "Durante la evaluaci\[OAcute]n de \
+In[325]:=",ExpressionUUID->"e9ba5682-2141-42c8-8a57-ebc79f00cf38"],
+
+Cell[BoxData[
+ InterpretationBox["\<\"x=\\!\\(\\*RowBox[{\\\"896\\\"}]\\) y \
+y=\\!\\(\\*RowBox[{\\\"1603\\\"}]\\), luego x es par pero y no, entonces \
+GCDBinario[\\!\\(\\*RowBox[{\\\"448\\\"}]\\),\\!\\(\\*RowBox[{\\\"1603\\\"}]\\\
+)]\"\>",
+  StringForm[
+  "x=`` y y=``, luego x es par pero y no, entonces GCDBinario[``,``]", 896, 
+   1603, 448, 1603],
+  Editable->False]], "Print",
+ CellChangeTimes->{
+  3.8708908763086367`*^9, {3.8708910102358646`*^9, 3.8708910220069323`*^9}, 
+   3.870891091550193*^9, 3.8708913456244593`*^9, 3.870891482848133*^9, 
+   3.8708915194112663`*^9, 3.870902696827837*^9, 3.870903986778968*^9},
+ CellLabel->
+  "Durante la evaluaci\[OAcute]n de \
+In[325]:=",ExpressionUUID->"525436be-7325-47cc-9777-eaa461b6877b"],
+
+Cell[BoxData[
+ InterpretationBox["\<\"x=\\!\\(\\*RowBox[{\\\"448\\\"}]\\) y \
+y=\\!\\(\\*RowBox[{\\\"1603\\\"}]\\), luego x es par pero y no, entonces \
+GCDBinario[\\!\\(\\*RowBox[{\\\"224\\\"}]\\),\\!\\(\\*RowBox[{\\\"1603\\\"}]\\\
+)]\"\>",
+  StringForm[
+  "x=`` y y=``, luego x es par pero y no, entonces GCDBinario[``,``]", 448, 
+   1603, 224, 1603],
+  Editable->False]], "Print",
+ CellChangeTimes->{
+  3.8708908763086367`*^9, {3.8708910102358646`*^9, 3.8708910220069323`*^9}, 
+   3.870891091550193*^9, 3.8708913456244593`*^9, 3.870891482848133*^9, 
+   3.8708915194112663`*^9, 3.870902696827837*^9, 3.870903986782957*^9},
+ CellLabel->
+  "Durante la evaluaci\[OAcute]n de \
+In[325]:=",ExpressionUUID->"f8d5dd48-1994-4080-bdc7-0b0eb1e979f7"],
+
+Cell[BoxData[
+ InterpretationBox["\<\"x=\\!\\(\\*RowBox[{\\\"224\\\"}]\\) y \
+y=\\!\\(\\*RowBox[{\\\"1603\\\"}]\\), luego x es par pero y no, entonces \
+GCDBinario[\\!\\(\\*RowBox[{\\\"112\\\"}]\\),\\!\\(\\*RowBox[{\\\"1603\\\"}]\\\
+)]\"\>",
+  StringForm[
+  "x=`` y y=``, luego x es par pero y no, entonces GCDBinario[``,``]", 224, 
+   1603, 112, 1603],
+  Editable->False]], "Print",
+ CellChangeTimes->{
+  3.8708908763086367`*^9, {3.8708910102358646`*^9, 3.8708910220069323`*^9}, 
+   3.870891091550193*^9, 3.8708913456244593`*^9, 3.870891482848133*^9, 
+   3.8708915194112663`*^9, 3.870902696827837*^9, 3.8709039867879443`*^9},
+ CellLabel->
+  "Durante la evaluaci\[OAcute]n de \
+In[325]:=",ExpressionUUID->"74fd0fb7-35c0-43a6-b6cf-0f59a1395f99"],
+
+Cell[BoxData[
+ InterpretationBox["\<\"x=\\!\\(\\*RowBox[{\\\"112\\\"}]\\) y \
+y=\\!\\(\\*RowBox[{\\\"1603\\\"}]\\), luego x es par pero y no, entonces \
+GCDBinario[\\!\\(\\*RowBox[{\\\"56\\\"}]\\),\\!\\(\\*RowBox[{\\\"1603\\\"}]\\)\
+]\"\>",
+  StringForm[
+  "x=`` y y=``, luego x es par pero y no, entonces GCDBinario[``,``]", 112, 
+   1603, 56, 1603],
+  Editable->False]], "Print",
+ CellChangeTimes->{
+  3.8708908763086367`*^9, {3.8708910102358646`*^9, 3.8708910220069323`*^9}, 
+   3.870891091550193*^9, 3.8708913456244593`*^9, 3.870891482848133*^9, 
+   3.8708915194112663`*^9, 3.870902696827837*^9, 3.8709039867929306`*^9},
+ CellLabel->
+  "Durante la evaluaci\[OAcute]n de \
+In[325]:=",ExpressionUUID->"a61f186b-4a2e-49dc-8249-8cc269c5a17a"],
+
+Cell[BoxData[
+ InterpretationBox["\<\"x=\\!\\(\\*RowBox[{\\\"56\\\"}]\\) y \
+y=\\!\\(\\*RowBox[{\\\"1603\\\"}]\\), luego x es par pero y no, entonces \
+GCDBinario[\\!\\(\\*RowBox[{\\\"28\\\"}]\\),\\!\\(\\*RowBox[{\\\"1603\\\"}]\\)\
+]\"\>",
+  StringForm[
+  "x=`` y y=``, luego x es par pero y no, entonces GCDBinario[``,``]", 56, 
+   1603, 28, 1603],
+  Editable->False]], "Print",
+ CellChangeTimes->{
+  3.8708908763086367`*^9, {3.8708910102358646`*^9, 3.8708910220069323`*^9}, 
+   3.870891091550193*^9, 3.8708913456244593`*^9, 3.870891482848133*^9, 
+   3.8708915194112663`*^9, 3.870902696827837*^9, 3.8709039867969203`*^9},
+ CellLabel->
+  "Durante la evaluaci\[OAcute]n de \
+In[325]:=",ExpressionUUID->"68324fbe-d8e6-42f7-af5e-d44434ef67a5"],
+
+Cell[BoxData[
+ InterpretationBox["\<\"x=\\!\\(\\*RowBox[{\\\"28\\\"}]\\) y \
+y=\\!\\(\\*RowBox[{\\\"1603\\\"}]\\), luego x es par pero y no, entonces \
+GCDBinario[\\!\\(\\*RowBox[{\\\"14\\\"}]\\),\\!\\(\\*RowBox[{\\\"1603\\\"}]\\)\
+]\"\>",
+  StringForm[
+  "x=`` y y=``, luego x es par pero y no, entonces GCDBinario[``,``]", 28, 
+   1603, 14, 1603],
+  Editable->False]], "Print",
+ CellChangeTimes->{
+  3.8708908763086367`*^9, {3.8708910102358646`*^9, 3.8708910220069323`*^9}, 
+   3.870891091550193*^9, 3.8708913456244593`*^9, 3.870891482848133*^9, 
+   3.8708915194112663`*^9, 3.870902696827837*^9, 3.870903986800909*^9},
+ CellLabel->
+  "Durante la evaluaci\[OAcute]n de \
+In[325]:=",ExpressionUUID->"95bb8e75-2bfb-4234-a9a1-e0f68e9a39a4"],
+
+Cell[BoxData[
+ InterpretationBox["\<\"x=\\!\\(\\*RowBox[{\\\"14\\\"}]\\) y \
+y=\\!\\(\\*RowBox[{\\\"1603\\\"}]\\), luego x es par pero y no, entonces \
+GCDBinario[\\!\\(\\*RowBox[{\\\"7\\\"}]\\),\\!\\(\\*RowBox[{\\\"1603\\\"}]\\)]\
+\"\>",
+  StringForm[
+  "x=`` y y=``, luego x es par pero y no, entonces GCDBinario[``,``]", 14, 
+   1603, 7, 1603],
+  Editable->False]], "Print",
+ CellChangeTimes->{
+  3.8708908763086367`*^9, {3.8708910102358646`*^9, 3.8708910220069323`*^9}, 
+   3.870891091550193*^9, 3.8708913456244593`*^9, 3.870891482848133*^9, 
+   3.8708915194112663`*^9, 3.870902696827837*^9, 3.870903986804927*^9},
+ CellLabel->
+  "Durante la evaluaci\[OAcute]n de \
+In[325]:=",ExpressionUUID->"495c33d1-8c86-4374-aec1-7d79a0919805"],
+
+Cell[BoxData[
+ InterpretationBox["\<\"x=\\!\\(\\*RowBox[{\\\"7\\\"}]\\) y \
+y=\\!\\(\\*RowBox[{\\\"1603\\\"}]\\), luego tanto x como y son impares, \
+entonces GCDBinario[\\!\\(\\*RowBox[{\\\"798\\\"}]\\),\\!\\(\\*RowBox[{\\\"7\\\
+\"}]\\)]\"\>",
+  StringForm[
+  "x=`` y y=``, luego tanto x como y son impares, entonces GCDBinario[``,``]",
+    7, 1603, 798, 7],
+  Editable->False]], "Print",
+ CellChangeTimes->{
+  3.8708908763086367`*^9, {3.8708910102358646`*^9, 3.8708910220069323`*^9}, 
+   3.870891091550193*^9, 3.8708913456244593`*^9, 3.870891482848133*^9, 
+   3.8708915194112663`*^9, 3.870902696827837*^9, 3.8709039868108835`*^9},
+ CellLabel->
+  "Durante la evaluaci\[OAcute]n de \
+In[325]:=",ExpressionUUID->"1d21c03d-289a-4815-bf7f-26da439cb23e"],
+
+Cell[BoxData[
+ InterpretationBox["\<\"x=\\!\\(\\*RowBox[{\\\"798\\\"}]\\) y \
+y=\\!\\(\\*RowBox[{\\\"7\\\"}]\\), luego x es par pero y no, entonces \
+GCDBinario[\\!\\(\\*RowBox[{\\\"399\\\"}]\\),\\!\\(\\*RowBox[{\\\"7\\\"}]\\)]\
+\"\>",
+  StringForm[
+  "x=`` y y=``, luego x es par pero y no, entonces GCDBinario[``,``]", 798, 7,
+    399, 7],
+  Editable->False]], "Print",
+ CellChangeTimes->{
+  3.8708908763086367`*^9, {3.8708910102358646`*^9, 3.8708910220069323`*^9}, 
+   3.870891091550193*^9, 3.8708913456244593`*^9, 3.870891482848133*^9, 
+   3.8708915194112663`*^9, 3.870902696827837*^9, 3.870903986814872*^9},
+ CellLabel->
+  "Durante la evaluaci\[OAcute]n de \
+In[325]:=",ExpressionUUID->"2333725b-56ed-461c-bcf2-8b2d1126bd76"],
+
+Cell[BoxData[
+ InterpretationBox["\<\"x=\\!\\(\\*RowBox[{\\\"399\\\"}]\\) y \
+y=\\!\\(\\*RowBox[{\\\"7\\\"}]\\), luego tanto x como y son impares, entonces \
+GCDBinario[\\!\\(\\*RowBox[{\\\"196\\\"}]\\),\\!\\(\\*RowBox[{\\\"7\\\"}]\\)]\
+\"\>",
+  StringForm[
+  "x=`` y y=``, luego tanto x como y son impares, entonces GCDBinario[``,``]",
+    399, 7, 196, 7],
+  Editable->False]], "Print",
+ CellChangeTimes->{
+  3.8708908763086367`*^9, {3.8708910102358646`*^9, 3.8708910220069323`*^9}, 
+   3.870891091550193*^9, 3.8708913456244593`*^9, 3.870891482848133*^9, 
+   3.8708915194112663`*^9, 3.870902696827837*^9, 3.870903986818878*^9},
+ CellLabel->
+  "Durante la evaluaci\[OAcute]n de \
+In[325]:=",ExpressionUUID->"1dda40a3-619f-4537-a8b8-fa6749f82031"],
+
+Cell[BoxData[
+ InterpretationBox["\<\"x=\\!\\(\\*RowBox[{\\\"196\\\"}]\\) y \
+y=\\!\\(\\*RowBox[{\\\"7\\\"}]\\), luego x es par pero y no, entonces \
+GCDBinario[\\!\\(\\*RowBox[{\\\"98\\\"}]\\),\\!\\(\\*RowBox[{\\\"7\\\"}]\\)]\"\
+\>",
+  StringForm[
+  "x=`` y y=``, luego x es par pero y no, entonces GCDBinario[``,``]", 196, 7,
+    98, 7],
+  Editable->False]], "Print",
+ CellChangeTimes->{
+  3.8708908763086367`*^9, {3.8708910102358646`*^9, 3.8708910220069323`*^9}, 
+   3.870891091550193*^9, 3.8708913456244593`*^9, 3.870891482848133*^9, 
+   3.8708915194112663`*^9, 3.870902696827837*^9, 3.8709039868229485`*^9},
+ CellLabel->
+  "Durante la evaluaci\[OAcute]n de \
+In[325]:=",ExpressionUUID->"55f2dc07-6235-4ce9-97ac-a133d0a5090c"],
+
+Cell[BoxData[
+ InterpretationBox["\<\"x=\\!\\(\\*RowBox[{\\\"98\\\"}]\\) y \
+y=\\!\\(\\*RowBox[{\\\"7\\\"}]\\), luego x es par pero y no, entonces \
+GCDBinario[\\!\\(\\*RowBox[{\\\"49\\\"}]\\),\\!\\(\\*RowBox[{\\\"7\\\"}]\\)]\"\
+\>",
+  StringForm[
+  "x=`` y y=``, luego x es par pero y no, entonces GCDBinario[``,``]", 98, 7, 
+   49, 7],
+  Editable->False]], "Print",
+ CellChangeTimes->{
+  3.8708908763086367`*^9, {3.8708910102358646`*^9, 3.8708910220069323`*^9}, 
+   3.870891091550193*^9, 3.8708913456244593`*^9, 3.870891482848133*^9, 
+   3.8708915194112663`*^9, 3.870902696827837*^9, 3.870903986827964*^9},
+ CellLabel->
+  "Durante la evaluaci\[OAcute]n de \
+In[325]:=",ExpressionUUID->"4606d44c-e6a4-4910-af6d-4b84339a60ad"],
+
+Cell[BoxData[
+ InterpretationBox["\<\"x=\\!\\(\\*RowBox[{\\\"49\\\"}]\\) y \
+y=\\!\\(\\*RowBox[{\\\"7\\\"}]\\), luego tanto x como y son impares, entonces \
+GCDBinario[\\!\\(\\*RowBox[{\\\"21\\\"}]\\),\\!\\(\\*RowBox[{\\\"7\\\"}]\\)]\"\
+\>",
+  StringForm[
+  "x=`` y y=``, luego tanto x como y son impares, entonces GCDBinario[``,``]",
+    49, 7, 21, 7],
+  Editable->False]], "Print",
+ CellChangeTimes->{
+  3.8708908763086367`*^9, {3.8708910102358646`*^9, 3.8708910220069323`*^9}, 
+   3.870891091550193*^9, 3.8708913456244593`*^9, 3.870891482848133*^9, 
+   3.8708915194112663`*^9, 3.870902696827837*^9, 3.8709039868320155`*^9},
+ CellLabel->
+  "Durante la evaluaci\[OAcute]n de \
+In[325]:=",ExpressionUUID->"b0b5e6fa-8cc5-4b46-bae9-ca2f1f488b7e"],
+
+Cell[BoxData[
+ InterpretationBox["\<\"x=\\!\\(\\*RowBox[{\\\"21\\\"}]\\) y \
+y=\\!\\(\\*RowBox[{\\\"7\\\"}]\\), luego tanto x como y son impares, entonces \
+GCDBinario[\\!\\(\\*RowBox[{\\\"7\\\"}]\\),\\!\\(\\*RowBox[{\\\"7\\\"}]\\)]\"\
+\>",
+  StringForm[
+  "x=`` y y=``, luego tanto x como y son impares, entonces GCDBinario[``,``]",
+    21, 7, 7, 7],
+  Editable->False]], "Print",
+ CellChangeTimes->{
+  3.8708908763086367`*^9, {3.8708910102358646`*^9, 3.8708910220069323`*^9}, 
+   3.870891091550193*^9, 3.8708913456244593`*^9, 3.870891482848133*^9, 
+   3.8708915194112663`*^9, 3.870902696827837*^9, 3.870903986838539*^9},
+ CellLabel->
+  "Durante la evaluaci\[OAcute]n de \
+In[325]:=",ExpressionUUID->"505d89b5-1b2f-4018-8509-354a7e987eb7"],
+
+Cell[BoxData[
+ InterpretationBox["\<\"x=\\!\\(\\*RowBox[{\\\"7\\\"}]\\) y \
+y=\\!\\(\\*RowBox[{\\\"7\\\"}]\\), luego x = y, entonces El GCD es \
+\\!\\(\\*RowBox[{\\\"7\\\"}]\\)\"\>",
+  StringForm["x=`` y y=``, luego x = y, entonces El GCD es ``", 7, 7, 7],
+  Editable->False]], "Print",
+ CellChangeTimes->{
+  3.8708908763086367`*^9, {3.8708910102358646`*^9, 3.8708910220069323`*^9}, 
+   3.870891091550193*^9, 3.8708913456244593`*^9, 3.870891482848133*^9, 
+   3.8708915194112663`*^9, 3.870902696827837*^9, 3.870903986843501*^9},
+ CellLabel->
+  "Durante la evaluaci\[OAcute]n de \
+In[325]:=",ExpressionUUID->"3234b2bf-cb66-4550-9d5e-3e34a3589a48"]
+}, Open  ]],
+
+Cell[BoxData["7"], "Output",
+ CellChangeTimes->{
+  3.8708908763627415`*^9, {3.8708910103042207`*^9, 3.8708910220744534`*^9}, 
+   3.8708910916053457`*^9, 3.8708913457219944`*^9, 3.8708914829451933`*^9, 
+   3.8708915195077868`*^9, 3.8709026969186454`*^9, 3.8709039868476634`*^9},
+ CellLabel->
+  "Out[327]=",ExpressionUUID->"e20780e0-0b8c-4d23-a0ac-c1b7090e5b86"]
+}, Open  ]],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.870889621665682*^9, 
+  3.870889624240217*^9}},ExpressionUUID->"833ad741-711b-4b25-a6d4-\
+32ff3ec36716"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.8708866593119802`*^9, 3.8708867048256664`*^9}, {
+   3.8708869753601007`*^9, 3.8708870932014713`*^9}, 
+   3.8708915428151655`*^9},ExpressionUUID->"7a2e80a7-e819-4419-881a-\
+8ce640f9133f"],
+
+Cell[BoxData["\"\<\>"], "Print",
+ GeneratedCell->False,
+ CellAutoOverwrite->False,
+ CellChangeTimes->{
+  3.870887093811299*^9, {3.870891557966427*^9, 
+   3.870891558796051*^9}},ExpressionUUID->"d927d122-aa4d-4a91-ad5f-\
+96d7b903ce2f"]
+}, Open  ]],
+
+Cell["", "Text",ExpressionUUID->"01b625d6-1309-45d3-8c83-c1a0089b85c3"],
+
+Cell["\<\
+e.) Considere los enteros  a=Random[Integer, {10, 10^5}] y b=Random[Integer, \
+{10, 10^5}]; Calcule el m\[AAcute]ximo com\[UAcute]n divisor de a y b con la \
+funci\[OAcute]n GCDBinario[x,y] y GCD (la que ya est\[AAcute] implementada en \
+Mathematica ). Compare los tiempos de ejecuci\[OAcute]n.Repita esto con los \
+siguientes enteros: a=Random[Integer, {10^99, 10^100}] y  b=Random[Integer, \
+{10^99, 10^100}];
+\
+\>", "Text",
+ CellChangeTimes->{{3.8708916178423414`*^9, 
+  3.8708917721507826`*^9}},ExpressionUUID->"f8a165d8-08fd-46f1-8a03-\
+e8e56e2ab2df"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"a", "=", 
+   RowBox[{"Random", "[", 
+    RowBox[{"Integer", ",", 
+     RowBox[{"{", 
+      RowBox[{"10", ",", 
+       RowBox[{"10", "^", "5"}]}], "}"}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"b", "=", 
+    RowBox[{"Random", "[", 
+     RowBox[{"Integer", ",", 
+      RowBox[{"{", 
+       RowBox[{"10", ",", 
+        RowBox[{"10", "^", "5"}]}], "}"}]}], "]"}]}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{"Block", "[", 
+  RowBox[{
+   RowBox[{"{", "Print", "}"}], ",", "\n", "\t", 
+   RowBox[{"AbsoluteTiming", "[", 
+    RowBox[{"GCDBinario", "[", 
+     RowBox[{"a", ",", "b"}], "]"}], "]"}]}], "\[IndentingNewLine]", 
+  "]"}], "\[IndentingNewLine]", 
+ RowBox[{"AbsoluteTiming", "[", 
+  RowBox[{"GCD", "[", 
+   RowBox[{"a", ",", "b"}], "]"}], "]"}], "\[IndentingNewLine]"}], "Input",
+ CellChangeTimes->{{3.8708917817133455`*^9, 3.8708918361163793`*^9}, {
+  3.8708918696301594`*^9, 3.87089190830858*^9}, {3.8708919670389843`*^9, 
+  3.8708919848642206`*^9}},ExpressionUUID->"22023daa-4126-4fbb-8933-\
+a8bfcb01c45a"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"0.0003449`", ",", "12"}], "}"}]], "Output",
+ CellChangeTimes->{3.8708918336198215`*^9, 3.870891909290539*^9, 
+  3.8708919810094914`*^9},
+ CellLabel->
+  "Out[304]=",ExpressionUUID->"a426b850-7e70-49cf-b8f3-1f55b2e1f47e"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"2.5`*^-6", ",", "12"}], "}"}]], "Output",
+ CellChangeTimes->{3.8708918336198215`*^9, 3.870891909290539*^9, 
+  3.8708919810155816`*^9},
+ CellLabel->
+  "Out[305]=",ExpressionUUID->"e1f747ea-7b03-404e-ba4b-955f1b907ffe"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"a", "=", 
+   RowBox[{"Random", "[", 
+    RowBox[{"Integer", ",", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"10", "^", "99"}], ",", 
+       RowBox[{"10", "^", "100"}]}], "}"}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"b", "=", 
+    RowBox[{"Random", "[", 
+     RowBox[{"Integer", ",", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"10", "^", "99"}], ",", 
+        RowBox[{"10", "^", "100"}]}], "}"}]}], "]"}]}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{"Block", "[", 
+  RowBox[{
+   RowBox[{"{", "Print", "}"}], ",", "\n", "\t", 
+   RowBox[{"AbsoluteTiming", "[", 
+    RowBox[{"GCDBinario", "[", 
+     RowBox[{"a", ",", "b"}], "]"}], "]"}]}], "\[IndentingNewLine]", 
+  "]"}], "\[IndentingNewLine]", 
+ RowBox[{"AbsoluteTiming", "[", 
+  RowBox[{"GCD", "[", 
+   RowBox[{"a", ",", "b"}], "]"}], "]"}]}], "Input",
+ CellChangeTimes->{{3.8708920123570004`*^9, 3.8708920144447527`*^9}, {
+  3.8709036569636307`*^9, 3.8709036661040916`*^9}, {3.870903942485855*^9, 
+  3.8709039650427637`*^9}, {3.8709040135574694`*^9, 3.8709040230572014`*^9}},
+ CellLabel->
+  "In[328]:=",ExpressionUUID->"3f325e0a-411f-4dbb-ba08-56c9f438f658"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"0.0074228`", ",", "3"}], "}"}]], "Output",
+ CellChangeTimes->{
+  3.8708920154462996`*^9, {3.8709036591360426`*^9, 3.8709036670469713`*^9}, 
+   3.870903966398423*^9, 3.8709040237561436`*^9},
+ CellLabel->
+  "Out[330]=",ExpressionUUID->"54fe81d2-f8c7-4fec-9398-e47ee2b7cef5"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"0.0000123`", ",", "3"}], "}"}]], "Output",
+ CellChangeTimes->{
+  3.8708920154462996`*^9, {3.8709036591360426`*^9, 3.8709036670469713`*^9}, 
+   3.870903966398423*^9, 3.8709040237728577`*^9},
+ CellLabel->
+  "Out[331]=",ExpressionUUID->"ef9b336a-3740-47fe-8439-5d21e4e3ae14"]
+}, Open  ]]
+},
+WindowSize->{1012.5, 501.75},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+Magnification:>1. Inherited,
+FrontEndVersion->"13.1 para Microsoft Windows (64-bit) (June 16, 2022)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"2a2b87e3-bdc9-43ee-8e97-bddfa776a895"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 486, 11, 104, "Text",ExpressionUUID->"ba98fc69-5082-47f4-b819-62bce9c4e387"],
+Cell[1047, 33, 154, 3, 28, "Input",ExpressionUUID->"73ea1818-ebda-4e27-b8df-ff5a4d72c2bc"],
+Cell[CellGroupData[{
+Cell[1226, 40, 5022, 127, 632, "Input",ExpressionUUID->"74d52ad4-77fd-4b84-b091-a5b444a56e66"],
+Cell[CellGroupData[{
+Cell[6273, 171, 746, 15, 22, "Print",ExpressionUUID->"c8f17904-b0a6-4c95-8508-7e731f6761e6"],
+Cell[7022, 188, 764, 15, 22, "Print",ExpressionUUID->"896e13f5-df66-4853-a7ed-92a0339b6610"],
+Cell[7789, 205, 748, 15, 22, "Print",ExpressionUUID->"d9795446-5d8c-4460-8fca-119fd9b10b6d"],
+Cell[8540, 222, 746, 15, 22, "Print",ExpressionUUID->"e9ba5682-2141-42c8-8a57-ebc79f00cf38"],
+Cell[9289, 239, 742, 15, 22, "Print",ExpressionUUID->"525436be-7325-47cc-9777-eaa461b6877b"],
+Cell[10034, 256, 742, 15, 22, "Print",ExpressionUUID->"f8d5dd48-1994-4080-bdc7-0b0eb1e979f7"],
+Cell[10779, 273, 744, 15, 22, "Print",ExpressionUUID->"74fd0fb7-35c0-43a6-b6cf-0f59a1395f99"],
+Cell[11526, 290, 742, 15, 22, "Print",ExpressionUUID->"a61f186b-4a2e-49dc-8249-8cc269c5a17a"],
+Cell[12271, 307, 740, 15, 22, "Print",ExpressionUUID->"68324fbe-d8e6-42f7-af5e-d44434ef67a5"],
+Cell[13014, 324, 738, 15, 22, "Print",ExpressionUUID->"95bb8e75-2bfb-4234-a9a1-e0f68e9a39a4"],
+Cell[13755, 341, 736, 15, 22, "Print",ExpressionUUID->"495c33d1-8c86-4374-aec1-7d79a0919805"],
+Cell[14494, 358, 750, 15, 22, "Print",ExpressionUUID->"1d21c03d-289a-4815-bf7f-26da439cb23e"],
+Cell[15247, 375, 730, 15, 22, "Print",ExpressionUUID->"2333725b-56ed-461c-bcf2-8b2d1126bd76"],
+Cell[15980, 392, 746, 15, 22, "Print",ExpressionUUID->"1dda40a3-619f-4537-a8b8-fa6749f82031"],
+Cell[16729, 409, 730, 15, 22, "Print",ExpressionUUID->"55f2dc07-6235-4ce9-97ac-a133d0a5090c"],
+Cell[17462, 426, 726, 15, 22, "Print",ExpressionUUID->"4606d44c-e6a4-4910-af6d-4b84339a60ad"],
+Cell[18191, 443, 744, 15, 22, "Print",ExpressionUUID->"b0b5e6fa-8cc5-4b46-bae9-ca2f1f488b7e"],
+Cell[18938, 460, 740, 15, 22, "Print",ExpressionUUID->"505d89b5-1b2f-4018-8509-354a7e987eb7"],
+Cell[19681, 477, 645, 12, 22, "Print",ExpressionUUID->"3234b2bf-cb66-4550-9d5e-3e34a3589a48"]
+}, Open  ]],
+Cell[20341, 492, 360, 6, 32, "Output",ExpressionUUID->"e20780e0-0b8c-4d23-a0ac-c1b7090e5b86"]
+}, Open  ]],
+Cell[20716, 501, 152, 3, 28, "Input",ExpressionUUID->"833ad741-711b-4b25-a6d4-32ff3ec36716"],
+Cell[CellGroupData[{
+Cell[20893, 508, 235, 4, 28, "Input",ExpressionUUID->"7a2e80a7-e819-4419-881a-8ce640f9133f"],
+Cell[21131, 514, 234, 6, 22, "Print",ExpressionUUID->"d927d122-aa4d-4a91-ad5f-96d7b903ce2f"]
+}, Open  ]],
+Cell[21380, 523, 71, 0, 35, "Text",ExpressionUUID->"01b625d6-1309-45d3-8c83-c1a0089b85c3"],
+Cell[21454, 525, 566, 11, 104, "Text",ExpressionUUID->"f8a165d8-08fd-46f1-8a03-e8e56e2ab2df"],
+Cell[CellGroupData[{
+Cell[22045, 540, 1111, 31, 243, "Input",ExpressionUUID->"22023daa-4126-4fbb-8933-a8bfcb01c45a"],
+Cell[23159, 573, 259, 6, 32, "Output",ExpressionUUID->"a426b850-7e70-49cf-b8f3-1f55b2e1f47e"],
+Cell[23421, 581, 257, 6, 35, "Output",ExpressionUUID->"e1f747ea-7b03-404e-ba4b-955f1b907ffe"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[23715, 592, 1228, 34, 222, "Input",ExpressionUUID->"3f325e0a-411f-4dbb-ba08-56c9f438f658"],
+Cell[24946, 628, 312, 7, 32, "Output",ExpressionUUID->"54fe81d2-f8c7-4fec-9398-e47ee2b7cef5"],
+Cell[25261, 637, 312, 7, 55, "Output",ExpressionUUID->"ef9b336a-3740-47fe-8439-5d21e4e3ae14"]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
+
